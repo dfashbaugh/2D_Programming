@@ -22,8 +22,24 @@ enum InstructionType
 class TwoDimensionalInstruction
 {
 public:
-	TwoDimensionalInstruction();
-	virtual ~TwoDimensionalInstruction();
+	TwoDimensionalInstruction() {};
+	virtual ~TwoDimensionalInstruction() {};
 
-	virtual TwoDimensionalAddress Execute(int registers []);
+	virtual TwoDimensionalAddress Execute(int registers []) = 0;
+};
+
+class AddInstruction : TwoDimensionalInstruction
+{
+public:
+
+	AddInstruction(int inputAd1, int inputAd2, int outputAd, TwoDimensionalAddress nextAd);
+	virtual ~AddInstruction() {};
+
+	virtual TwoDimensionalAddress Execute(int registers[]);
+
+private:
+	int inputAddr1;
+	int inputAddr2;
+	int outputAddr;
+	TwoDimensionalAddress nextAddr;
 };
