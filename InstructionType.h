@@ -1,6 +1,7 @@
 // An address that points to a position in 2 Dimensional program space
 struct TwoDimensionalAddress
 {
+	TwoDimensionalAddress(int inX, int inY) {x = inX; y = inY; };
 	int x;
 	int y;
 };
@@ -28,7 +29,7 @@ public:
 	virtual TwoDimensionalAddress Execute(int registers []) = 0;
 };
 
-class AddInstruction : TwoDimensionalInstruction
+class AddInstruction : public TwoDimensionalInstruction
 {
 public:
 
