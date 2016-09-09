@@ -29,6 +29,7 @@ public:
 	virtual TwoDimensionalAddress Execute(int registers []) = 0;
 };
 
+// Define a set of basic instructions
 class AddInstruction : public TwoDimensionalInstruction
 {
 public:
