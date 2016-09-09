@@ -25,7 +25,5 @@ public:
 	TwoDimensionalInstruction();
 	virtual ~TwoDimensionalInstruction();
 
-private:
-	TwoDimensionalAddress myAddress;
-	TwoDimensionalAddress nextAddress;
+	virtual TwoDimensionalAddress Execute(int registers []);
 };
