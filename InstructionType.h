@@ -45,3 +45,19 @@ private:
 	int outputAddr;
 	TwoDimensionalAddress nextAddr;
 };
+
+class SubInstruction : public TwoDimensionalInstruction
+{
+public:
+
+	SubInstruction(int inputSub1, int inputSub2, int outputAd, TwoDimensionalAddress nextAd);
+	virtual ~SubInstruction() {};
+
+	virtual TwoDimensionalAddress Execute(int registers []);
+
+private:
+	int inputAddr1;
+	int inputAddr2;
+	int outputAddr;
+	TwoDimensionalAddress nextAddr;
+};
