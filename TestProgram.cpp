@@ -121,7 +121,7 @@ void TestSubCommand(int registers[], int regFileSize)
 	CheckResults(testName, valueList, 3);
 }
 
-void TestMultCommand(int registers[0], int regFileSize)
+void TestMultCommand(int registers[], int regFileSize)
 {
 	std::string testName = "Multiplication Instruction";
 	SETUP_TEST
@@ -149,6 +149,34 @@ void TestMultCommand(int registers[0], int regFileSize)
 	CheckResults(testName, valueList, 3);
 }
 
+void TestDivCommand(int registers[], int regFileSize)
+{
+	std::string testName = "Division Instruction";
+	SETUP_TEST
+
+	registers[3] = 6;
+	registers[5] = 2;
+
+	instructions[0][0] = new DivInstruction(3, 5, 4, TwoDimensionalAddress(1, 0));
+
+	TwoDimensionalAddress myAddr = instructions[0][0]->Execute(registers);
+
+	ExpectedValue valueList [3];
+	valueList[0].valueName = "Register 4 Value";
+	valueList[0].expectedValue = 3;
+	valueList[0].actualValue = registers[4];
+
+	valueList[1].valueName = "Address X";
+	valueList[1].expectedValue = 1;
+	valueList[1].actualValue = myAddr.x;
+
+	valueList[2].valueName = "Address Y";
+	valueList[2].expectedValue = 0;
+	valueList[2].actualValue = myAddr.y;
+
+	CheckResults(testName, valueList, 3);
+}
+
 void TestCommands()
 {
 	// Example Functional Execution Codee
@@ -158,6 +186,7 @@ void TestCommands()
 	TestAddCommand(registers, REG_FILE_SIZE);
 	TestSubCommand(registers, REG_FILE_SIZE);
 	TestMultCommand(registers, REG_FILE_SIZE);
+	TestDivCommand(registers, REG_FILE_SIZE);
 }
 
 int main(void)

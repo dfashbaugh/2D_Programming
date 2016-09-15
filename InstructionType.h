@@ -77,3 +77,19 @@ private:
 	int outputAddr;
 	TwoDimensionalAddress nextAddr;
 };
+
+class DivInstruction : public TwoDimensionalInstruction
+{
+public:
+
+	DivInstruction(int inputDiv1, int inputDiv2, int outputAd, TwoDimensionalAddress nextAd);
+	virtual ~DivInstruction() {};
+
+	virtual TwoDimensionalAddress Execute(int registers []);
+
+private:
+	int inputAddr1;
+	int inputAddr2;
+	int outputAddr;
+	TwoDimensionalAddress nextAddr;
+};

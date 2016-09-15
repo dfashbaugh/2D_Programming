@@ -39,3 +39,16 @@ TwoDimensionalAddress MultInstruction::Execute(int registers[])
 	registers[outputAddr] = registers[inputAddr1] * registers[inputAddr2];
 	return nextAddr;
 }
+
+DivInstruction::DivInstruction(int inputDiv1, int inputDiv2, int outputAd, TwoDimensionalAddress nextAd)
+	: inputAddr1(inputDiv1)
+	, inputAddr2(inputDiv2)
+	, outputAddr(outputAd)
+	, nextAddr(nextAd)
+{}
+
+TwoDimensionalAddress DivInstruction::Execute(int registers[])
+{
+	registers[outputAddr] = registers[inputAddr1] / registers[inputAddr2];
+	return nextAddr;
+}
