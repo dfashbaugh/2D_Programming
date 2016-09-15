@@ -26,3 +26,16 @@ TwoDimensionalAddress SubInstruction::Execute(int registers[])
 	registers[outputAddr] = registers[inputAddr1] - registers[inputAddr2];
 	return nextAddr;
 }
+
+MultInstruction::MultInstruction(int inputMult1, int inputMult2, int outputAd, TwoDimensionalAddress nextAd)
+	: inputAddr1(inputMult1)
+	, inputAddr2(inputMult2)
+	, outputAddr(outputAd)
+	, nextAddr(nextAd)
+{}
+
+TwoDimensionalAddress MultInstruction::Execute(int registers[])
+{
+	registers[outputAddr] = registers[inputAddr1] * registers[inputAddr2];
+	return nextAddr;
+}

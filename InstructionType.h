@@ -61,3 +61,19 @@ private:
 	int outputAddr;
 	TwoDimensionalAddress nextAddr;
 };
+
+class MultInstruction : public TwoDimensionalInstruction
+{
+public:
+
+	MultInstruction(int inputMult1, int inputMult2, int outputAd, TwoDimensionalAddress nextAd);
+	virtual ~MultInstruction() {};
+
+	virtual TwoDimensionalAddress Execute(int registers []);
+
+private:
+	int inputAddr1;
+	int inputAddr2;
+	int outputAddr;
+	TwoDimensionalAddress nextAddr;
+};
