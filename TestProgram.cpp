@@ -87,6 +87,31 @@ void TestSubCommand(int registers[], int regFileSize)
 	}
 }
 
+void TestMultCommand(int registers[0], int regFileSize)
+{
+	std::string testName = "Multiplication Instruction";
+	SETUP_TEST
+
+	registers[3] = 3;
+	registers[5] = 5;
+
+	instructions[0][0] = new MultInstruction(3, 5, 4, TwoDimensionalAddress(1, 0));
+
+	TwoDimensionalAddress myAddr = instructions[0][0]->Execute(registers);
+
+	if(registers[4] == 15 && myAddr.x == 1 && myAddr.y == 0)
+	{
+		OnSuccess(testName);
+	}
+	else
+	{
+		OnFailure(testName);
+		ListExpected("Register 4 Value", 15, registers[4]);
+		ListExpected("Address X", 1, myAddr.x);
+		ListExpected("Address Y", 0, myAddr.y);
+	}
+}
+
 void TestCommands()
 {
 	// Example Functional Execution Codee
@@ -95,6 +120,7 @@ void TestCommands()
 
 	TestAddCommand(registers, REG_FILE_SIZE);
 	TestSubCommand(registers, REG_FILE_SIZE);
+	TestMultCommand(registers, REG_FILE_SIZE);
 }
 
 int main(void)
