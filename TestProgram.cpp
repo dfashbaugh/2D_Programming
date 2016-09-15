@@ -6,6 +6,13 @@ using namespace std;
 #define REG_FILE_SIZE 255
 #define SETUP_TEST TwoDimensionalInstruction* instructions[10][10]; ClearRegisters(registers, regFileSize);
 
+struct ExpectedValue
+{
+	std::string valueName;
+	int expectedValue;
+	int actualValue;
+};
+
 void PrintRegisters(int registers[], int regFileSize)
 {
 	for(int i = 0; i < regFileSize; i++)
@@ -32,14 +39,35 @@ void OnFailure(std::string testName)
 	cout << testName << ": " << "Failed" << endl;
 }
 
-void ListExpected(std::string valueName, int expected, int found)
+void ListExpected(ExpectedValue value)
 {
-	cout << "    " << valueName << " - Expected: " << expected << " Found: " << found << endl;
+	cout << "    " << value.valueName << " - Expected: " << value.expectedValue << " Found: " << value.actualValue << endl;
+}
+
+void CheckResults(std::string testName, ExpectedValue valueList [], int numberOfValues)
+{
+	for(int i = 0; i < numberOfValues; i++)
+	{
+		if(valueList[i].expectedValue != valueList[i].actualValue)
+		{
+			OnFailure(testName);
+
+			for(int j = 0; j < numberOfValues; j++)
+			{
+				ListExpected(valueList[j]);
+			}
+
+			return;
+		}
+	}
+
+	OnSuccess(testName);
 }
 
 void TestAddCommand(int registers[], int regFileSize)
 {
 	std::string testName = "Add Instruction";
+
 	SETUP_TEST
 
 	registers[4] = 2;
@@ -49,17 +77,20 @@ void TestAddCommand(int registers[], int regFileSize)
 
 	TwoDimensionalAddress myAddr = instructions[0][0]->Execute(registers);
 
-	if(registers[0] == 8 && myAddr.x == 1 && myAddr.y == 0)
-	{
-		OnSuccess(testName);
-	}
-	else
-	{
-		OnFailure(testName);
-		ListExpected("Register 0 Value", 8, registers[0]);
-		ListExpected("Address X", 1, myAddr.x);
-		ListExpected("Address Y", 0, myAddr.y);
-	}
+	ExpectedValue valueList [3];
+	valueList[0].valueName = "Register 0 Value";
+	valueList[0].expectedValue = 8;
+	valueList[0].actualValue = registers[0];
+
+	valueList[1].valueName = "Address X";
+	valueList[1].expectedValue = 1;
+	valueList[1].actualValue = myAddr.x;
+
+	valueList[2].valueName = "Address Y";
+	valueList[2].expectedValue = 0;
+	valueList[2].actualValue = myAddr.y;
+
+	CheckResults(testName, valueList, 3);
 }
 
 void TestSubCommand(int registers[], int regFileSize)
@@ -74,17 +105,20 @@ void TestSubCommand(int registers[], int regFileSize)
 
 	TwoDimensionalAddress myAddr = instructions[0][0]->Execute(registers);
 
-	if(registers[1] == 8 && myAddr.x == 0 && myAddr.y == 1)
-	{
-		OnSuccess(testName);
-	}
-	else
-	{
-		OnFailure(testName);
-		ListExpected("Register 1 Value", 8, registers[1]);
-		ListExpected("Address X", 0, myAddr.x);
-		ListExpected("Address Y", 1, myAddr.y);
-	}
+	ExpectedValue valueList [3];
+	valueList[0].valueName = "Register 1 Value";
+	valueList[0].expectedValue = 8;
+	valueList[0].actualValue = registers[1];
+
+	valueList[1].valueName = "Address X";
+	valueList[1].expectedValue = 0;
+	valueList[1].actualValue = myAddr.x;
+
+	valueList[2].valueName = "Address Y";
+	valueList[2].expectedValue = 1;
+	valueList[2].actualValue = myAddr.y;
+
+	CheckResults(testName, valueList, 3);
 }
 
 void TestMultCommand(int registers[0], int regFileSize)
@@ -99,17 +133,20 @@ void TestMultCommand(int registers[0], int regFileSize)
 
 	TwoDimensionalAddress myAddr = instructions[0][0]->Execute(registers);
 
-	if(registers[4] == 15 && myAddr.x == 1 && myAddr.y == 0)
-	{
-		OnSuccess(testName);
-	}
-	else
-	{
-		OnFailure(testName);
-		ListExpected("Register 4 Value", 15, registers[4]);
-		ListExpected("Address X", 1, myAddr.x);
-		ListExpected("Address Y", 0, myAddr.y);
-	}
+	ExpectedValue valueList [3];
+	valueList[0].valueName = "Register 4 Value";
+	valueList[0].expectedValue = 15;
+	valueList[0].actualValue = registers[4];
+
+	valueList[1].valueName = "Address X";
+	valueList[1].expectedValue = 1;
+	valueList[1].actualValue = myAddr.x;
+
+	valueList[2].valueName = "Address Y";
+	valueList[2].expectedValue = 0;
+	valueList[2].actualValue = myAddr.y;
+
+	CheckResults(testName, valueList, 3);
 }
 
 void TestCommands()
