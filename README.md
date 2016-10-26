@@ -10,3 +10,5 @@ location, and each command points to a next address that is also a 2D location.
 This depends on a program counter that doesn't really count. The 2 dimensional program counter is constantly loaded by each
 instruction that is executed. Therefore, every instruction includes the arguments necessary for the functionality of the 
 instruction, but also includes a next address.
+
+## Instruction List
