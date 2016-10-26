@@ -52,3 +52,4 @@ TwoDimensionalAddress DivInstruction::Execute(int registers[])
 	registers[outputAddr] = registers[inputAddr1] / registers[inputAddr2];
 	return nextAddr;
 }
+

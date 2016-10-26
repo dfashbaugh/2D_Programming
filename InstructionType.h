@@ -93,3 +93,19 @@ private:
 	int outputAddr;
 	TwoDimensionalAddress nextAddr;
 };
+
+class BranchIfGreaterInstruction : public TwoDimensionalInstruction
+{
+public:
+
+	BranchIfGreaterInstruction(int inputBr1, int inputBr2, TwoDimensionalAddress nextAd, TwoDimensionalAddress branchAd);
+	virtual ~BranchIfGreaterInstruction() {};
+
+	virtual TwoDimensionalAddress Execute(int registers []);
+
+private:
+	int inputAddr1;
+	int inputAddr2;
+	TwoDimensionalAddress nextAddr;
+	TwoDimensionalAddress branchAddr;
+};
