@@ -7,7 +7,11 @@ location, and each command points to a next address that is also a 2D location.
 
 ## How Does it Work?
 
-This depends on a program counter that doesn't really count. The 2 dimensional program counter is constantly loaded by each
+It works like any other programming language. It has a program counter that points at a command, the command executes, then the program counter moves on. 
+The program counter in this case is 2 dimensional though. So it doesn't 
+really count..
+
+The 2 dimensional program counter is constantly loaded by each
 instruction that is executed. Therefore, every instruction includes the arguments necessary for the functionality of the 
 instruction, but also includes a next address.
 
