@@ -15,4 +15,8 @@ The 2 dimensional program counter is constantly loaded by each
 instruction that is executed. Therefore, every instruction includes the arguments necessary for the functionality of the 
 instruction, but also includes a next address.
 
-## Instruction List
+## What is this Code For?
+
+The code in this repo is intended to be extended by other users. Its also written in C++ because my main intention is to use it with embedded systems.
+
+Examples are Coming soon....
