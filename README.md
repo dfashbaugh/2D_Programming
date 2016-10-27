@@ -20,3 +20,11 @@ instruction, but also includes a next address.
 The code in this repo is intended to be extended by other users. Its also written in C++ because my main intention is to use it with embedded systems.
 
 Examples are Coming soon....
+
+## Syntax
+
+Syntax is a tricky question with 2D programming. In most cases, the syntax will probably be visual. But when it comes down to it, a file will be made at some point that will linearly contain the information.
+
+Currently the command structure will be as follows:
+
+AddressX AddressY Command Argument1 Argument2 ArgumentN
