@@ -27,5 +27,18 @@ Syntax is a tricky question with 2D programming. In most cases, the syntax will 
 
 Currently the command structure will be as follows:
 ```
-InstructionAddressX InstructionAddressY Command Argument1 Argument2
+InstructionAddressX InstructionAddressY Command Argument1 Argument2 NextAddrX NextAddrY
+
+With a branch Instruction:
+InstructionAddressX InstructionAddressY Command Argument1 Argument2 BrAddrX BrAddrY NextAddrX NextAddrY
 ```
+
+That's really hard to look at. So lets do an example program that shows a for loop.
+```
+0 0 Set 0 20 0 1      % Set register 0 to 20 and point to address 0,1
+0 1 Set 1 0 0 2       % Set register 1 to 0 and point to address 0,2
+0 2 Set 2 1 1 2       % Set Register 2 to 1 and point to address 1,2
+1 2 BrGr 0 1 1 1 -1 -1 % Check if register 0 is greater than register 1. Branch to 1,1 if so. If not end program with negative address
+1 1 Add 2 1 1 1 2 	  % Add register 2 to register 1 and set register 1 to the sum and point to address 1,2
+```
+This is also hard to look at, but that's why this programming language is 2 Dimensional. Humans aren't intended to be the readers of the 'Assembly' this puts out. Anyway, this code will run a for loop that will run until register 1's value reaches 20
