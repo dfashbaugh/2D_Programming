@@ -53,3 +53,18 @@ TwoDimensionalAddress DivInstruction::Execute(int registers[])
 	return nextAddr;
 }
 
+BranchIfGreaterInstruction::BranchIfGreaterInstruction(int inputBr1, int inputBr2, TwoDimensionalAddress nextAd, TwoDimensionalAddress branchAd)
+	: inputAddr1(inputBr1)
+	, inputAddr2(inputBr2)
+	, nextAddr(nextAd)
+	, branchAddr(branchAd)
+{}
+
+TwoDimensionalAddress BranchIfGreaterInstruction::Execute(int registers[])
+{
+	if(registers[inputAddr1] > registers[inputAddr2])
+		return branchAddr;
+
+	return nextAddr;
+}
+
