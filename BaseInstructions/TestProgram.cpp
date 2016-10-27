@@ -177,6 +177,29 @@ void TestDivCommand(int registers[], int regFileSize)
 	CheckResults(testName, valueList, 3);
 }
 
+void TestBranchIfGreaterCommand(int registers[], int regFileSize)
+{
+	std::string testName = "Branch If Greater Instruction";
+	SETUP_TEST
+
+	registers[2] = 4;
+	registers[3] = 1;
+
+	instructions[0][0] = new BranchIfGreaterInstruction(2,3, TwoDimensionalAddress(1,2), TwoDimensionalAddress(3,4));
+	TwoDimensionalAddress myAddr =  instructions[0][0]->Execute(registers);
+
+	ExpectedValue valueList [2];
+	valueList[0].valueName = "Address X";
+	valueList[0].expectedValue = 3;
+	valueList[0].actualValue = myAddr.x;
+
+	valueList[1].valueName = "Address Y";
+	valueList[1].expectedValue = 4;
+	valueList[1].actualValue = myAddr.y;
+
+	CheckResults(testName, valueList, 2);
+}
+
 void TestCommands()
 {
 	// Example Functional Execution Codee
@@ -187,6 +210,7 @@ void TestCommands()
 	TestSubCommand(registers, REG_FILE_SIZE);
 	TestMultCommand(registers, REG_FILE_SIZE);
 	TestDivCommand(registers, REG_FILE_SIZE);
+	TestBranchIfGreaterCommand(registers, REG_FILE_SIZE);
 }
 
 int main(void)
