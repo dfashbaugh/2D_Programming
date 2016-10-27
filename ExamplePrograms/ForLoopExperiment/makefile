@@ -1,2 +1,2 @@
-instrMake: ForLoopExperiment.cpp
-	g++ ForLoopExperiment.cpp -o ForLoopExperiment.app
+instrMake: ForLoopExperiment.cpp ../../BaseInstructions/InstructionType.cpp
+	g++ ForLoopExperiment.cpp ../../BaseInstructions/InstructionType.cpp -o ForLoopExperiment.app
