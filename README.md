@@ -42,3 +42,8 @@ That's really hard to look at. So lets do an example program that shows a for lo
 1 1 Add 2 1 1 1 2 	  % Add register 2 to register 1 and set register 1 to the sum and point to address 1,2
 ```
 This is also hard to look at, but that's why this programming language is 2 Dimensional. Humans aren't intended to be the readers of the 'Assembly' this puts out. Anyway, this code will run a for loop that will run until register 1's value reaches 20
+
+## Basic Command Set
+
+* Set
+  * Sets a register address to a given value
