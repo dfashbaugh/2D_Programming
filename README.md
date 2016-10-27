@@ -26,5 +26,4 @@ Examples are Coming soon....
 Syntax is a tricky question with 2D programming. In most cases, the syntax will probably be visual. But when it comes down to it, a file will be made at some point that will linearly contain the information.
 
 Currently the command structure will be as follows:
-
-AddressX AddressY Command Argument1 Argument2 ArgumentN
+* AddressX AddressY Command Argument1 Argument2 ArgumentN
