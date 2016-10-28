@@ -61,4 +61,11 @@ More coming soon...
 
 The goal of this code is to create an easily extensible 2D programming language that can run on embedded systems.
 
+A code designer that allows visual design of XY code will be created. A compiler for that code designer, and a decompiler will also be made
+
 I fully intend to create a series of libraries for 2D programming to cover things like Arduino control and DSP. These will serve as an example of how to program in 2D, but also should be useful libraries.
+
+Future Libraries Intended to be written:
+* Arduino
+* DSP
+* DsPIC
