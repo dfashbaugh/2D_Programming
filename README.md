@@ -49,3 +49,11 @@ This is also hard to look at, but that's why this programming language is 2 Dime
   * Sets a register address to a given value
   * Syntax: `<AddrX> <AddrY> Set <Reg> <Value> <NextAddrX> <nNextAddrY>`
   * Example: `0 1 Set 1 20 0 2`
+
+More coming soon...
+
+## Future Development
+
+The goal of this code is to create an easily extensible 2D programming language that can run on embedded systems.
+
+I fully intend to create a series of libraries for 2D programming to cover things like Arduino control and DSP. These will serve as an example of how to program in 2D, but also should be useful libraries.
