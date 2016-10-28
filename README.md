@@ -20,3 +20,74 @@ instruction, but also includes a next address.
 The code in this repo is intended to be extended by other users. Its also written in C++ because my main intention is to use it with embedded systems.
 
 Examples are Coming soon....
+
+## Syntax
+
+Syntax is a tricky question with 2D programming. In most cases, the syntax will probably be visual. But when it comes down to it, a file will be made at some point that will linearly contain the information.
+
+Currently the command structure will be as follows:
+```
+InstructionAddressX InstructionAddressY Command Argument1 Argument2 NextAddrX NextAddrY
+
+With a branch Instruction:
+InstructionAddressX InstructionAddressY Command Argument1 Argument2 BrAddrX BrAddrY NextAddrX NextAddrY
+```
+
+That's really hard to look at. So lets do an example program that shows a for loop.
+```
+0 0 Set 0 20 0 1      % Set register 0 to 20 and point to address 0,1
+0 1 Set 1 0 0 2       % Set register 1 to 0 and point to address 0,2
+0 2 Set 2 1 1 2       % Set Register 2 to 1 and point to address 1,2
+1 2 BrGr 0 1 1 1 -1 -1 % Check if register 0 is greater than register 1. Branch to 1,1 if so. If not end program with negative address
+1 1 Add 2 1 1 1 2 	  % Add register 2 to register 1 and set register 1 to the sum and point to address 1,2
+```
+This is also hard to look at, but that's why this programming language is 2 Dimensional. Humans aren't intended to be the readers of the 'Assembly' this puts out. Anyway, this code will run a for loop that will run until register 1's value reaches 20
+
+## Basic Command Set
+
+* Set
+  * Sets a register address to a given value
+  * Syntax: `<AddrX> <AddrY> Set <Reg> <Value> <NextAddrX> <NextAddrY>`
+  * Example: `0 1 Set 1 20 0 2`
+
+* NOp
+  * Does nothing, but moves onto the next address. This will be a useful command for "Challenge Style" checkerboard programming!
+  * Syntax: `<AddrX> <AddrY> NOp <NextAddrX> <NextAddrY>`
+  * Example: `2 1 NOp 2 2`
+
+* Add
+  * Adds the values of 2 registers and saves the sum into a third regsiter
+  * Syntax: `<AddrX> <AddrY> Add <Reg1> <Reg2> <RegDestination> <NextAddrX> <NextAddrY>`
+  * Example: `0 1 Add 2 1 1 2 2`
+
+* Sub
+  * Subtracts the value of one register from another register and stores the difference in a third register
+  * Syntax: `<AddrX> <AddrY> Sub <Reg1> <Reg2> <RegDestination> <NextAddrX> <NextAddrY>`
+  * Example: `0 2 Sub 1 2 3 1 2`
+    * Subtracts the value of register 2 from the value of register 1 and stores the value in register 3
+    * Since subtraction isn't commuttative, this must noted
+
+* Div
+  * Divides the value of one register out of the value of another register and stores the quotient in a third register
+  * Syntax: `<AddrX> <AddrY> Div <Reg1> <Reg2> <RegDestination> <NextAddrX> <NextAddrY>`
+  * Example: `1 2 Div 2 3 2 1 3`
+    * Evaluates to the value of register 2 being divided by the value of register 3 [reg(2)/Reg(3)]. The quotient is then stored in register 2.
+    * Division is not commuttative so this must be noted.
+
+* Mult
+  * Multiplies the value of one register by the value of another register and stores the product in a third register
+  * Syntax: `<AddrX> <AddrY> Mult <Reg1> <Reg2> <RegDestination> <NextAddrX> <NextAddrY>`
+  * Example: `2 3 Mult 1 2 3 2 4`
+
+## Future Development
+
+The goal of this code is to create an easily extensible 2D programming language that can run on embedded systems.
+
+A code designer that allows visual design of XY code will be created. A compiler for that code designer, and a decompiler will also be made
+
+I fully intend to create a series of libraries for 2D programming to cover things like Arduino control and DSP. These will serve as an example of how to program in 2D, but also should be useful libraries.
+
+Future Libraries Intended to be written:
+* Arduino
+* DSP
+* DsPIC
