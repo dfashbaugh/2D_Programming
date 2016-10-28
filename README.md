@@ -47,3 +47,5 @@ This is also hard to look at, but that's why this programming language is 2 Dime
 
 * Set
   * Sets a register address to a given value
+  * Syntax: `<AddrX> <AddrY> Set <Reg> <Value> <NextAddrX> <nNextAddrY>`
+  * Example: `0 1 Set 1 20 0 2`
