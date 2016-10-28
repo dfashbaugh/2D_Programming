@@ -68,3 +68,15 @@ TwoDimensionalAddress BranchIfGreaterInstruction::Execute(int registers[])
 	return nextAddr;
 }
 
+SetInstruction::SetInstruction(int inputReg, int inputValue, TwoDimensionalAddress nextAd)
+	: inputAddr1(inputReg)
+	, inputVal(inputValue)
+	, nextAddr(nextAd)
+{}
+
+TwoDimensionalAddress SetInstruction::Execute(int registers[])
+{
+	registers[inputAddr1] = inputVal;
+
+	return nextAddr;
+}
