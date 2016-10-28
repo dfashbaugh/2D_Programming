@@ -65,6 +65,7 @@ This is also hard to look at, but that's why this programming language is 2 Dime
   * Syntax: `<AddrX> <AddrY> Sub <Reg1> <Reg2> <RegDestination> <NextAddrX> <NextAddrY>`
   * Example: `0 2 Sub 1 2 3 1 2`
     * Subtracts the value of register 2 from the value of register 1 and stores the value in register 3
+    * Since subtraction isn't commuttative, this must noted
 
 * Div
 
