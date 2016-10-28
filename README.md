@@ -50,10 +50,21 @@ This is also hard to look at, but that's why this programming language is 2 Dime
   * Syntax: `<AddrX> <AddrY> Set <Reg> <Value> <NextAddrX> <NextAddrY>`
   * Example: `0 1 Set 1 20 0 2`
 
+* NOp
+  * Does nothing, but moves onto the next address. This will be a useful command for "Challenge Style" checkerboard programming!
+  * Syntax: `<AddrX> <AddrY> NOp <NextAddrX> <NextAddrY>`
+  * Example: `2 1 NOp 2 2`
+
 * Add
   * Adds the values of 2 registers and saves the sum into a third regsiter
   * Syntax: `<AddrX> <AddrY> Add <Reg1> <Reg2> <RegDestination> <NextAddrX> <NextAddrY>`
   * Example: `0 1 Add 2 1 1 2 2`
+
+* Sub
+
+* Div
+
+* Mult
 
 More coming soon...
 
