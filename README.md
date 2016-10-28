@@ -61,6 +61,10 @@ This is also hard to look at, but that's why this programming language is 2 Dime
   * Example: `0 1 Add 2 1 1 2 2`
 
 * Sub
+  * Subtracts the value of one register from another register and stores the difference in a third register
+  * Syntax: `<AddrX> <AddrY> Sub <Reg1> <Reg2> <RegDestination> <NextAddrX> <NextAddrY>`
+  * Example: `0 2 Sub 1 2 3 1 2`
+    * Subtracts the value of register 2 from the value of register 1 and stores the value in register 3
 
 * Div
 
