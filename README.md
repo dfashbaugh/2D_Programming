@@ -68,10 +68,16 @@ This is also hard to look at, but that's why this programming language is 2 Dime
     * Since subtraction isn't commuttative, this must noted
 
 * Div
+  * Divides the value of one register out of the value of another register and stores the quotient in a third register
+  * Syntax: `<AddrX> <AddrY> Div <Reg1> <Reg2> <RegDestination> <NextAddrX> <NextAddrY>`
+  * Example: `1 2 Div 2 3 2 1 3`
+    * Evaluates to the value of register 2 being divided by the value of register 3 [reg(2)/Reg(3)]. The quotient is then stored in register 2.
+    * Division is not commuttative so this must be noted.
 
 * Mult
-
-More coming soon...
+  * Multiplies the value of one register by the value of another register and stores the product in a third register
+  * Syntax: `<AddrX> <AddrY> Mult <Reg1> <Reg2> <RegDestination> <NextAddrX> <NextAddrY>`
+  * Example: `2 3 Mult 1 2 3 2 4`
 
 ## Future Development
 
