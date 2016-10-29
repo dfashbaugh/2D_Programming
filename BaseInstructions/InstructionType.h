@@ -109,3 +109,18 @@ private:
 	TwoDimensionalAddress nextAddr;
 	TwoDimensionalAddress branchAddr;
 };
+
+class SetInstruction : public TwoDimensionalInstruction
+{
+public:
+	
+	SetInstruction(int inputReg, int inputValue, TwoDimensionalAddress nextAd);
+	virtual ~SetInstruction() {};
+
+	virtual TwoDimensionalAddress Execute(int registers[]);
+
+private:
+	int inputAddr1;
+	int inputVal;
+	TwoDimensionalAddress nextAddr;
+};

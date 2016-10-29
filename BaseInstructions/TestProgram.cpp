@@ -200,6 +200,30 @@ void TestBranchIfGreaterCommand(int registers[], int regFileSize)
 	CheckResults(testName, valueList, 2);
 }
 
+void TestSetCommand(int registers[], int regFileSize)
+{
+	std::string testName = "Set Instruction";
+	SETUP_TEST
+
+	instructions[0][0] = new SetInstruction(1, 22, TwoDimensionalAddress(1, 2));
+	TwoDimensionalAddress myAddr = instructions[0][0]->Execute(registers);
+
+	ExpectedValue valueList [3];
+	valueList[0].valueName = "Register 1 Value";
+	valueList[0].expectedValue = 22;
+	valueList[0].actualValue = registers[1];
+
+	valueList[1].valueName = "Address X";
+	valueList[1].expectedValue = 1;
+	valueList[1].actualValue = myAddr.x;
+
+	valueList[2].valueName = "Address Y";
+	valueList[2].expectedValue = 2;
+	valueList[2].actualValue = myAddr.y;
+
+	CheckResults(testName, valueList, 3);
+}
+
 void TestCommands()
 {
 	// Example Functional Execution Codee
@@ -211,6 +235,7 @@ void TestCommands()
 	TestMultCommand(registers, REG_FILE_SIZE);
 	TestDivCommand(registers, REG_FILE_SIZE);
 	TestBranchIfGreaterCommand(registers, REG_FILE_SIZE);
+	TestSetCommand(registers, REG_FILE_SIZE);
 }
 
 int main(void)
