@@ -124,3 +124,15 @@ private:
 	int inputVal;
 	TwoDimensionalAddress nextAddr;
 };
+
+class NOpInstruction : public TwoDimensionalInstruction
+{
+public:
+	NOpInstruction(TwoDimensionalAddress nextAd);
+	virtual ~NOpInstruction() {};
+
+	virtual	TwoDimensionalAddress Execute(int registers[]);
+
+private:
+	TwoDimensionalAddress nextAddr;
+};
