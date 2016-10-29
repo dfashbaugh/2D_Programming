@@ -80,3 +80,12 @@ TwoDimensionalAddress SetInstruction::Execute(int registers[])
 
 	return nextAddr;
 }
+
+NOpInstruction::NOpInstruction(TwoDimensionalAddress nextAd)
+	: nextAddr(nextAd)
+{}
+
+TwoDimensionalAddress NOpInstruction::Execute(int registers[])
+{
+	return nextAddr;
+}

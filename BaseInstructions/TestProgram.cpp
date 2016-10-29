@@ -224,6 +224,27 @@ void TestSetCommand(int registers[], int regFileSize)
 	CheckResults(testName, valueList, 3);
 }
 
+void TestNOpCommand(int registers[], int regFileSize)
+{
+	std::string testName = "NOp Instruction";
+	SETUP_TEST
+
+	instructions[0][0] = new NOpInstruction(TwoDimensionalAddress(1,0));
+	TwoDimensionalAddress myAddr = instructions[0][0]->Execute(registers);
+
+	ExpectedValue valueList [2];
+
+	valueList[0].valueName = "Address X";
+	valueList[0].expectedValue = 1;
+	valueList[0].actualValue = myAddr.x;
+
+	valueList[1].valueName = "Address Y";
+	valueList[1].expectedValue = 0;
+	valueList[1].actualValue = myAddr.y;
+
+	CheckResults(testName, valueList, 2);
+}
+
 void TestCommands()
 {
 	// Example Functional Execution Codee
@@ -236,6 +257,7 @@ void TestCommands()
 	TestDivCommand(registers, REG_FILE_SIZE);
 	TestBranchIfGreaterCommand(registers, REG_FILE_SIZE);
 	TestSetCommand(registers, REG_FILE_SIZE);
+	TestNOpCommand(registers, REG_FILE_SIZE);
 }
 
 int main(void)
