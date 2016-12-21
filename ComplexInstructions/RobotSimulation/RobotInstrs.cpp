@@ -12,3 +12,16 @@ TwoDimensionalAddress MoveForwardInsruction::Execute(int registers[])
 
 	return nextAddr;
 }
+
+MoveBackwardInsruction::MoveBackwardInsruction(RobotSim &myRobot, int numSteps, TwoDimensionalAddress nextAd)
+	: theRobot(myRobot)
+	, numberOfSteps(numSteps)
+	, nextAddr(nextAd)
+{}
+
+TwoDimensionalAddress MoveBackwardInsruction::Execute(int registers[])
+{
+	theRobot.MoveRobotBackward(numberOfSteps);
+
+	return nextAddr;
+}

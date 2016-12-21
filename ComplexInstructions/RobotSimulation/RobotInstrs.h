@@ -15,3 +15,18 @@ private:
 	int numberOfSteps;
 	TwoDimensionalAddress nextAddr;
 };
+
+class MoveBackwardInsruction : public TwoDimensionalInstruction
+{
+public:
+	
+	MoveBackwardInsruction(RobotSim &myRobot, int numSteps, TwoDimensionalAddress nextAd);
+	virtual ~MoveBackwardInsruction() {};
+
+	virtual TwoDimensionalAddress Execute(int registers[]);
+
+private:
+	RobotSim &theRobot;
+	int numberOfSteps;
+	TwoDimensionalAddress nextAddr;
+};
