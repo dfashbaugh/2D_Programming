@@ -22,7 +22,6 @@ int main(void)
 		cout << "Robot X: " << robot.getCurRobotX() << " Robot Y: " << robot.getCurRobotY() << endl;
 	}
 	
-	cout << robot.getCurRobotX() << " " << robot.getCurRobotY() << endl;
 	cout << "Done!" << endl;
 
 	return 0;
