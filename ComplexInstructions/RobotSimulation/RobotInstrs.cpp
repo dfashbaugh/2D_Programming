@@ -8,6 +8,7 @@ MoveForwardInsruction::MoveForwardInsruction(RobotSim &myRobot, int numSteps, Tw
 
 TwoDimensionalAddress MoveForwardInsruction::Execute(int registers[])
 {
+	theRobot.MoveRobotForward(numberOfSteps);
 
 	return nextAddr;
 }

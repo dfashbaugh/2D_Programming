@@ -15,6 +15,6 @@ private:
 
 	int curRobotX;
 	int curRobotY;
-	int curRobotAngle;
+	int curRobotAngle; // In Degrees
 
 };
