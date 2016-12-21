@@ -1,0 +1,2 @@
+instrMake: TestRobot.cpp ../../BaseInstructions/InstructionType.cpp RobotSim.cpp RobotInstrs.cpp
+	g++ TestRobot.cpp ../../BaseInstructions/InstructionType.cpp RobotSim.cpp RobotInstrs.cpp -o RobotTestExecutor.app
