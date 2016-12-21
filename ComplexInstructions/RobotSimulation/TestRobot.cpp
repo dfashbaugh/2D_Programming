@@ -16,12 +16,10 @@ int main(void)
 	instructions[0][0] = new MoveForwardInsruction(robot, 20, TwoDimensionalAddress(0,-1));
 
 	TwoDimensionalAddress myAddr(0,0);
-	cout << myAddr.x << " " << myAddr.y << endl;
 	while(myAddr.x >= 0 && myAddr.y >= 0)
 	{
 		myAddr = instructions[myAddr.x][myAddr.y]->Execute(registers);
-		cout << "Instruction Done" << endl;
-		cout << myAddr.x << " " << myAddr.y << endl;
+		cout << "Robot X: " << robot.getCurRobotX() << " Robot Y: " << robot.getCurRobotY() << endl;
 	}
 	
 	cout << robot.getCurRobotX() << " " << robot.getCurRobotY() << endl;
