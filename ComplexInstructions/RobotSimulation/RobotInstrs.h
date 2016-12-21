@@ -45,3 +45,18 @@ private:
 	int angle;
 	TwoDimensionalAddress nextAddr;
 };
+
+class RotateRelativeInstruction : public TwoDimensionalInstruction
+{
+public:
+	
+	RotateRelativeInstruction(RobotSim &myRobot, int curAngle, TwoDimensionalAddress nextAd);
+	virtual ~RotateRelativeInstruction() {};
+
+	virtual TwoDimensionalAddress Execute(int registers[]);
+
+private:
+	RobotSim &theRobot;
+	int angle;
+	TwoDimensionalAddress nextAddr;
+};

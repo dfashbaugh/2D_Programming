@@ -38,3 +38,16 @@ TwoDimensionalAddress RotateAbsoluteInstruction::Execute(int registers[])
 
 	return nextAddr;
 }
+
+RotateRelativeInstruction::RotateRelativeInstruction(RobotSim &myRobot, int curAngle, TwoDimensionalAddress nextAd)
+	: theRobot(myRobot)
+	, angle(curAngle)
+	, nextAddr(nextAd)
+{}
+
+TwoDimensionalAddress RotateRelativeInstruction::Execute(int registers[])
+{
+	theRobot.RotateRobotRelative(angle);
+
+	return nextAddr;
+}
