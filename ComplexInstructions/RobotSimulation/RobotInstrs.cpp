@@ -1,8 +1,8 @@
 #include "RobotInstrs.h"
 
-MoveForwardInsruction::MoveForwardInsruction(RobotSim &myRobot, int inputValue, TwoDimensionalAddress nextAd)
+MoveForwardInsruction::MoveForwardInsruction(RobotSim &myRobot, int numSteps, TwoDimensionalAddress nextAd)
 	: theRobot(myRobot)
-	, inputVal(inputValue)
+	, numberOfSteps(numSteps)
 	, nextAddr(nextAd)
 {}
 

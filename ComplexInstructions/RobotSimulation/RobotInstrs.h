@@ -5,13 +5,13 @@ class MoveForwardInsruction : public TwoDimensionalInstruction
 {
 public:
 	
-	MoveForwardInsruction(RobotSim &myRobot, int inputValue, TwoDimensionalAddress nextAd);
+	MoveForwardInsruction(RobotSim &myRobot, int numSteps, TwoDimensionalAddress nextAd);
 	virtual ~MoveForwardInsruction() {};
 
 	virtual TwoDimensionalAddress Execute(int registers[]);
 
 private:
 	RobotSim &theRobot;
-	int inputVal;
+	int numberOfSteps;
 	TwoDimensionalAddress nextAddr;
 };
