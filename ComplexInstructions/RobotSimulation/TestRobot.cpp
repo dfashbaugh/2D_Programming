@@ -24,7 +24,9 @@ int main(void)
 	while(myAddr.x >= 0 && myAddr.y >= 0)
 	{
 		myAddr = instructions[myAddr.x][myAddr.y]->Execute(registers);
-		cout << "Robot X: " << robot.getCurRobotX() << " Robot Y: " << robot.getCurRobotY() << " Robot Angle: " << robot.getCurRobotAngle() << endl;
+		cout << "Robot X: " << robot.getCurRobotX();
+		cout << " Robot Y: " << robot.getCurRobotY();
+		cout << " Robot Angle: " << robot.getCurRobotAngle() << endl;
 	}
 	
 	cout << "Done!" << endl;
