@@ -5,7 +5,8 @@ public:
 
 	void MoveRobotForward	(int steps);
 	void MoveRobotBackward	(int steps);
-	void RotateRobot		(int angle);
+	void RotateRobotAbsolute(int angle);
+	void RotateRobotRelative(int angle);
 
 	int getCurRobotX	() 	{return curRobotX; };
 	int getCurRobotY	() 	{return curRobotY; };

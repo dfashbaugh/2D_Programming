@@ -34,7 +34,12 @@ void RobotSim::MoveRobotBackward(int steps)
 	curRobotY = curRobotY + furtherY;
 }
 
-void RobotSim::RotateRobot(int angle)
+void RobotSim::RotateRobotAbsolute(int angle)
 {
 	curRobotAngle = angle;
+}
+
+void RobotSim::RotateRobotRelative(int angle)
+{
+	curRobotAngle += angle;
 }

@@ -13,7 +13,10 @@ int main(void)
 	TwoDimensionalInstruction* instructions[10][10]; 
 
 	// Set Loop Control Variable
-	instructions[0][0] = new MoveForwardInsruction(robot, 20, TwoDimensionalAddress(0,-1));
+	instructions[0][0] = new MoveForwardInsruction(robot, 20, TwoDimensionalAddress(0,1));
+	instructions[0][1] = new MoveForwardInsruction(robot, 10, TwoDimensionalAddress(0,2));
+	instructions[0][2] = new RotateAbsoluteInstruction(robot, 270, TwoDimensionalAddress(0, 3));
+	instructions[0][3] = new MoveForwardInsruction(robot, 10, TwoDimensionalAddress(0,-1));
 
 	TwoDimensionalAddress myAddr(0,0);
 	while(myAddr.x >= 0 && myAddr.y >= 0)

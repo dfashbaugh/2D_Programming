@@ -34,7 +34,7 @@ RotateAbsoluteInstruction::RotateAbsoluteInstruction(RobotSim &myRobot, int curA
 
 TwoDimensionalAddress RotateAbsoluteInstruction::Execute(int registers[])
 {
-	theRobot.RotateRobot(angle);
+	theRobot.RotateRobotAbsolute(angle);
 
 	return nextAddr;
 }
