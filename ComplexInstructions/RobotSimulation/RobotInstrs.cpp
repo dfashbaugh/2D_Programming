@@ -25,3 +25,16 @@ TwoDimensionalAddress MoveBackwardInsruction::Execute(int registers[])
 
 	return nextAddr;
 }
+
+RotateAbsoluteInstruction::RotateAbsoluteInstruction(RobotSim &myRobot, int curAngle, TwoDimensionalAddress nextAd)
+	: theRobot(myRobot)
+	, angle(curAngle)
+	, nextAddr(nextAd)
+{}
+
+TwoDimensionalAddress RotateAbsoluteInstruction::Execute(int registers[])
+{
+	theRobot.RotateRobot(angle);
+
+	return nextAddr;
+}

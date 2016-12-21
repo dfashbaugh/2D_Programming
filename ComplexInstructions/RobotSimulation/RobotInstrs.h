@@ -30,3 +30,18 @@ private:
 	int numberOfSteps;
 	TwoDimensionalAddress nextAddr;
 };
+
+class RotateAbsoluteInstruction : public TwoDimensionalInstruction
+{
+public:
+	
+	RotateAbsoluteInstruction(RobotSim &myRobot, int curAngle, TwoDimensionalAddress nextAd);
+	virtual ~RotateAbsoluteInstruction() {};
+
+	virtual TwoDimensionalAddress Execute(int registers[]);
+
+private:
+	RobotSim &theRobot;
+	int angle;
+	TwoDimensionalAddress nextAddr;
+};
