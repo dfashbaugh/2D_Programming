@@ -2,8 +2,7 @@
 #include <vector>
 #include <string>
 
-struct TwoDimensionalInstructionData
-{
+struct TwoDimensionalInstructionData{
 	TwoDimensionalInstruction* Instruction;
 	int curX;
 	int curY;
