@@ -29,7 +29,6 @@ TwoDimensionalInstructionData ProgramParser::GetInstructionData(std::string inst
 	StringList instrList = splitBySpace(instructionString);
 	int AddressX = std::atoi(instrList[0].c_str());
 	int AddressY = std::atoi(instrList[1].c_str());
-	std::string instructionName = instrList[2];
 
     TwoDimensionalInstructionData theData;
     theData.curX = AddressX;
@@ -60,6 +59,40 @@ StringList ProgramParser::splitBySpace(std::string splitString)
 
 TwoDimensionalInstruction* ProgramParser::GetInstructionFromString(StringList &instructionStringList)
 {
-	TwoDimensionalInstruction* myInstr = new SetInstruction(0, 20, TwoDimensionalAddress(0,1));
+	std::string AddInstrTypeName = "Add";
+	std::string SetInstrTypeName = "Set";
+
+	std::string instrName = instructionStringList[2];
+
+	TwoDimensionalInstruction* myInstr;
+
+	if(instrName == AddInstrTypeName)
+	{
+		std::cout << "Add Type" << std::endl;
+		int Reg1 = std::atoi(instructionStringList[3].c_str());
+		int Reg2 = std::atoi(instructionStringList[4].c_str());
+		int RegDest = std::atoi(instructionStringList[5].c_str());
+		int destX = std::atoi(instructionStringList[6].c_str());
+		int destY = std::atoi(instructionStringList[7].c_str());
+		myInstr = new AddInstruction(Reg1, Reg2, RegDest, TwoDimensionalAddress(destX, destY));
+	}
+	else if(instrName == SetInstrTypeName)
+	{
+		std::cout << "Set Type" << std::endl;
+
+		int Reg = std::atoi(instructionStringList[3].c_str());
+		int value = std::atoi(instructionStringList[4].c_str());
+		int destX = std::atoi(instructionStringList[5].c_str());
+		int destY = std::atoi(instructionStringList[6].c_str());
+
+		myInstr = new SetInstruction(Reg, value, TwoDimensionalAddress(destX, destY));
+	}
+
 	return myInstr;
 }
+
+
+
+
+
+
