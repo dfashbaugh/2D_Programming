@@ -9,6 +9,7 @@ struct TwoDimensionalInstructionData{
 };
 
 typedef std::vector<TwoDimensionalInstructionData> InstructionList;
+typedef std::vector<std::string> StringList;
 
 class ProgramParser{
 public:
@@ -19,4 +20,6 @@ public:
 
 private:
 	void LoadInstructionList(std::string filePath);
+	TwoDimensionalInstructionData GetInstructionData(std::string instructionString);
+	StringList splitBySpace(std::string splitString);
 };
