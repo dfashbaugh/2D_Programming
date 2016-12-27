@@ -34,6 +34,7 @@ TwoDimensionalInstructionData ProgramParser::GetInstructionData(std::string inst
     TwoDimensionalInstructionData theData;
     theData.curX = AddressX;
     theData.curY = AddressY;
+    theData.Instruction = GetInstructionFromString(instrList);
 
     return theData;
 }
@@ -55,4 +56,10 @@ StringList ProgramParser::splitBySpace(std::string splitString)
     } while (iss);
 
     return myList;
+}
+
+TwoDimensionalInstruction* ProgramParser::GetInstructionFromString(StringList &instructionStringList)
+{
+	TwoDimensionalInstruction* myInstr = new SetInstruction(0, 20, TwoDimensionalAddress(0,1));
+	return myInstr;
 }
