@@ -16,4 +16,7 @@ public:
 	~ProgramParser();
 
 	InstructionList instrList;
+
+private:
+	void LoadInstructionList(std::string filePath);
 };
