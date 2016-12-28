@@ -69,6 +69,7 @@ TwoDimensionalInstruction* ProgramParser::GetInstructionFromString(StringList &i
 {
 	std::string AddInstrTypeName = "Add";
 	std::string SetInstrTypeName = "Set";
+	std::string BranchGreaterTypeName = "BrGr";
 
 	std::string instrName = instructionStringList[2];
 
@@ -87,13 +88,24 @@ TwoDimensionalInstruction* ProgramParser::GetInstructionFromString(StringList &i
 	else if(instrName == SetInstrTypeName)
 	{
 		std::cout << "Set Type" << std::endl;
-
 		int Reg = std::atoi(instructionStringList[3].c_str());
 		int value = std::atoi(instructionStringList[4].c_str());
 		int destX = std::atoi(instructionStringList[5].c_str());
 		int destY = std::atoi(instructionStringList[6].c_str());
 
 		myInstr = new SetInstruction(Reg, value, TwoDimensionalAddress(destX, destY));
+	}
+	else if(instrName == BranchGreaterTypeName)
+	{
+		std::cout << "Branch if Greater Type" << std::endl;
+		int Reg1 = std::atoi(instructionStringList[3].c_str());
+		int Reg2 = std::atoi(instructionStringList[4].c_str());
+		int brDestX = std::atoi(instructionStringList[5].c_str());
+		int brDestY = std::atoi(instructionStringList[6].c_str());
+		int dDestX = std::atoi(instructionStringList[7].c_str());
+		int dDestY = std::atoi(instructionStringList[8].c_str());
+
+		myInstr = new BranchIfGreaterInstruction(Reg1,Reg2, TwoDimensionalAddress(dDestX, dDestY), TwoDimensionalAddress(brDestX,brDestY));
 	}
 
 	return myInstr;
