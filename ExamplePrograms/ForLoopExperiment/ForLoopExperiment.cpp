@@ -30,7 +30,7 @@ void MakeAForLoop()
 	while(myAddr.x >= 0 || myAddr.y >= 0)
 	{
 		myAddr =  instructions[myAddr.x][myAddr.y]->Execute(registers);
-		cout << registers[1] << endl;
+		cout << registers[0] << endl;
 	}
 	
 	cout << "Done!" << endl;
