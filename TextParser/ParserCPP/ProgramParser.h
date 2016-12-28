@@ -23,5 +23,10 @@ private:
 	void LoadInstructionList(std::string filePath);
 	TwoDimensionalInstructionData GetInstructionData(std::string instructionString);
 	StringList splitBySpace(std::string splitString);
+	
 	TwoDimensionalInstruction* GetInstructionFromString(StringList &instructionStringList);
+
+	TwoDimensionalInstruction* GetAddInstructionFromSplitString(StringList &instructionStringList);
+	TwoDimensionalInstruction* GetSetInstructionFromSplitString(StringList &instructionStringList);
+	TwoDimensionalInstruction* GetBranchIfGreaterInstructionFromSplitString(StringList &instructionStringList);
 };
