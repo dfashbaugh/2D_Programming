@@ -21,7 +21,7 @@ int main(void)
 	while(myAddr.x >= 0 && myAddr.y >= 0)
 	{
 		myAddr =  instructions[myAddr.x][myAddr.y]->Execute(registers);
-		cout << registers[0] << endl;
+		cout << registers[0] << " " << registers[1] << " " << registers[2] << endl;
 	}
 	
 	cout << "Done!" << endl;
