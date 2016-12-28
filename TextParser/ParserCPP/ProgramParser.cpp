@@ -18,9 +18,18 @@ void ProgramParser::LoadInstructionList(std::string filePath)
 {
 	std::ifstream infile(filePath);
 	std::string line;
-	std::getline(infile, line);
-	TwoDimensionalInstructionData curData = GetInstructionData(line);
-	std::cout << curData.curX << " " << curData.curY << std::endl;
+
+	while(std::getline(infile, line))
+	{
+		
+
+		if(line.length() > 0)
+		{
+			TwoDimensionalInstructionData curData = GetInstructionData(line);
+			std::cout << curData.curX << " " << curData.curY << std::endl;
+		}
+	}
+	
 
 }
 
