@@ -18,6 +18,7 @@ public:
 
 	InstructionList instrList;
 
+	InstructionList GetInstructionList()	{return instrList; };
 private:
 	void LoadInstructionList(std::string filePath);
 	TwoDimensionalInstructionData GetInstructionData(std::string instructionString);

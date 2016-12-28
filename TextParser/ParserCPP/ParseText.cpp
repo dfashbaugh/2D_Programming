@@ -5,6 +5,6 @@ using namespace std;
 
 int main(void)
 {
-	ProgramParser("testProgram.2dp");
+	ProgramParser theParser("testProgram.2dp");
 	return 0;
 }
