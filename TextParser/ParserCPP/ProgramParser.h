@@ -8,6 +8,11 @@ struct TwoDimensionalInstructionData{
 	int curY;
 };
 
+struct InstructionConfigData{
+	std::string InstrName;
+	int InstrEnum;
+};
+
 typedef std::vector<TwoDimensionalInstructionData> InstructionList;
 typedef std::vector<std::string> StringList;
 
