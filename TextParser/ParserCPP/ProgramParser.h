@@ -16,16 +16,22 @@ struct InstructionConfigData{
 typedef std::vector<TwoDimensionalInstructionData> InstructionList;
 typedef std::vector<std::string> StringList;
 
+typedef std::vector<InstructionConfigData> InstructionConfiguration;
+
 class ProgramParser{
 public:
 	ProgramParser(std::string filePath, std::string configFile);
 	~ProgramParser();
 
 	InstructionList instrList;
+	InstructionConfiguration configData;
 
 	InstructionList GetInstructionList()	{return instrList; };
 private:
 	void LoadInstructionList(std::string filePath, std::string configFile);
+
+	void LoadParserConfiguration(std::string configFile);
+
 	TwoDimensionalInstructionData GetInstructionData(std::string instructionString);
 	StringList splitBySpace(std::string splitString);
 	

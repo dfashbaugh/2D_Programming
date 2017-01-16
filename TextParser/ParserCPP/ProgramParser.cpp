@@ -16,6 +16,8 @@ ProgramParser::~ProgramParser()
 
 void ProgramParser::LoadInstructionList(std::string filePath, std::string configFile)
 {
+	LoadParserConfiguration(configFile);
+
 	std::ifstream infile(filePath);
 	std::string line;
 
@@ -89,6 +91,11 @@ TwoDimensionalInstruction* ProgramParser::GetInstructionFromString(StringList &i
 	}
 
 	return myInstr;
+}
+
+void ProgramParser::LoadParserConfiguration(std::string configFile)
+{
+
 }
 
 TwoDimensionalInstruction* ProgramParser::GetAddInstructionFromSplitString(StringList &instructionStringList)
