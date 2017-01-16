@@ -69,23 +69,28 @@ StringList ProgramParser::splitBySpace(std::string splitString)
 
 TwoDimensionalInstruction* ProgramParser::GetInstructionFromString(StringList &instructionStringList)
 {
-	std::string AddInstrTypeName = "Add";
-	std::string SetInstrTypeName = "Set";
-	std::string BranchGreaterTypeName = "BrGr";
-
 	std::string instrName = instructionStringList[2];
+	int instructionNumber = 0;
+
+	for(auto dat : configData)
+	{
+		if(instrName == dat.InstrName)
+		{
+			instructionNumber = dat.InstrEnum;
+		}
+	}
 
 	TwoDimensionalInstruction* myInstr;
 
-	if(instrName == AddInstrTypeName)
+	if(instructionNumber == addInstr)
 	{
 		myInstr = GetAddInstructionFromSplitString(instructionStringList);
 	}
-	else if(instrName == SetInstrTypeName)
+	else if(instructionNumber == setInstr)
 	{
 		myInstr = GetSetInstructionFromSplitString(instructionStringList);
 	}
-	else if(instrName == BranchGreaterTypeName)
+	else if(instructionNumber == brgrInstr)
 	{
 		myInstr = GetBranchIfGreaterInstructionFromSplitString(instructionStringList);
 	}
