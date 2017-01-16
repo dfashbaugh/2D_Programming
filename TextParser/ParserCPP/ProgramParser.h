@@ -13,6 +13,13 @@ struct InstructionConfigData{
 	int InstrEnum;
 };
 
+enum BasicInstructionEnums {addInstr = 0, 
+							subInstr = 1, 
+							setInstr = 2, 
+							multInstr = 3, 
+							divInstr = 4, 
+							brgrInstr = 5};
+
 typedef std::vector<TwoDimensionalInstructionData> InstructionList;
 typedef std::vector<std::string> StringList;
 
