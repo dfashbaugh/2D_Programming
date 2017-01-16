@@ -4,9 +4,9 @@
 #include <sstream>
 
 
-ProgramParser::ProgramParser(std::string filePath)
+ProgramParser::ProgramParser(std::string filePath, std::string configFile)
 {
-	LoadInstructionList(filePath);
+	LoadInstructionList(filePath, configFile);
 }
 
 ProgramParser::~ProgramParser()
@@ -14,8 +14,10 @@ ProgramParser::~ProgramParser()
 	
 }
 
-void ProgramParser::LoadInstructionList(std::string filePath)
+void ProgramParser::LoadInstructionList(std::string filePath, std::string configFile)
 {
+	LoadParserConfiguration(configFile);
+
 	std::ifstream infile(filePath);
 	std::string line;
 
@@ -67,28 +69,56 @@ StringList ProgramParser::splitBySpace(std::string splitString)
 
 TwoDimensionalInstruction* ProgramParser::GetInstructionFromString(StringList &instructionStringList)
 {
-	std::string AddInstrTypeName = "Add";
-	std::string SetInstrTypeName = "Set";
-	std::string BranchGreaterTypeName = "BrGr";
-
 	std::string instrName = instructionStringList[2];
+	int instructionNumber = 0;
+
+	for(auto dat : configData)
+	{
+		if(instrName == dat.InstrName)
+		{
+			instructionNumber = dat.InstrEnum;
+		}
+	}
 
 	TwoDimensionalInstruction* myInstr;
 
-	if(instrName == AddInstrTypeName)
+	// If it is a basic instruction, get it here
+	if(instructionNumber == addInstr)
 	{
 		myInstr = GetAddInstructionFromSplitString(instructionStringList);
 	}
-	else if(instrName == SetInstrTypeName)
+	else if(instructionNumber == setInstr)
 	{
 		myInstr = GetSetInstructionFromSplitString(instructionStringList);
 	}
-	else if(instrName == BranchGreaterTypeName)
+	else if(instructionNumber == brgrInstr)
 	{
 		myInstr = GetBranchIfGreaterInstructionFromSplitString(instructionStringList);
 	}
 
+	// If non-basic instruction, get it here
+
 	return myInstr;
+}
+
+void ProgramParser::LoadParserConfiguration(std::string configFile)
+{
+	std::ifstream infile(configFile);
+	std::string line;
+
+	configData.clear();
+	while(std::getline(infile, line))
+	{
+		if(line.length() > 0)
+		{
+			StringList myList = splitBySpace(line);
+			InstructionConfigData newConfigData;
+			newConfigData.InstrName = myList.at(0);
+			newConfigData.InstrEnum = std::atoi(myList.at(1).c_str());
+
+			configData.push_back(newConfigData);
+		}
+	}
 }
 
 TwoDimensionalInstruction* ProgramParser::GetAddInstructionFromSplitString(StringList &instructionStringList)

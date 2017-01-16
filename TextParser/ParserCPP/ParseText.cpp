@@ -5,7 +5,7 @@ using namespace std;
 
 int main(void)
 {
-	ProgramParser theParser("testProgram.2dp");
+	ProgramParser theParser("testProgram.2dp", "ParseConfig.cfg");
 
 	InstructionList myList = theParser.GetInstructionList();
 
