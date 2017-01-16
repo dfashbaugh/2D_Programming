@@ -4,9 +4,9 @@
 #include <sstream>
 
 
-ProgramParser::ProgramParser(std::string filePath)
+ProgramParser::ProgramParser(std::string filePath, std::string configFile)
 {
-	LoadInstructionList(filePath);
+	LoadInstructionList(filePath, configFile);
 }
 
 ProgramParser::~ProgramParser()
@@ -14,7 +14,7 @@ ProgramParser::~ProgramParser()
 	
 }
 
-void ProgramParser::LoadInstructionList(std::string filePath)
+void ProgramParser::LoadInstructionList(std::string filePath, std::string configFile)
 {
 	std::ifstream infile(filePath);
 	std::string line;

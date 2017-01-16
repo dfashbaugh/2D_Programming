@@ -13,14 +13,14 @@ typedef std::vector<std::string> StringList;
 
 class ProgramParser{
 public:
-	ProgramParser(std::string filePath);
+	ProgramParser(std::string filePath, std::string configFile);
 	~ProgramParser();
 
 	InstructionList instrList;
 
 	InstructionList GetInstructionList()	{return instrList; };
 private:
-	void LoadInstructionList(std::string filePath);
+	void LoadInstructionList(std::string filePath, std::string configFile);
 	TwoDimensionalInstructionData GetInstructionData(std::string instructionString);
 	StringList splitBySpace(std::string splitString);
 	
