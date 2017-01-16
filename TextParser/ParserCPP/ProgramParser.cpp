@@ -95,7 +95,22 @@ TwoDimensionalInstruction* ProgramParser::GetInstructionFromString(StringList &i
 
 void ProgramParser::LoadParserConfiguration(std::string configFile)
 {
+	std::ifstream infile(configFile);
+	std::string line;
 
+	configData.clear();
+	while(std::getline(infile, line))
+	{
+		if(line.length() > 0)
+		{
+			StringList myList = splitBySpace(line);
+			InstructionConfigData newConfigData;
+			newConfigData.InstrName = myList.at(0);
+			newConfigData.InstrEnum = std::atoi(myList.at(1).c_str());
+
+			configData.push_back(newConfigData);
+		}
+	}
 }
 
 TwoDimensionalInstruction* ProgramParser::GetAddInstructionFromSplitString(StringList &instructionStringList)
