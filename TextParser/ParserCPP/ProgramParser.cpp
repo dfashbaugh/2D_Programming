@@ -82,6 +82,7 @@ TwoDimensionalInstruction* ProgramParser::GetInstructionFromString(StringList &i
 
 	TwoDimensionalInstruction* myInstr;
 
+	// If it is a basic instruction, get it here
 	if(instructionNumber == addInstr)
 	{
 		myInstr = GetAddInstructionFromSplitString(instructionStringList);
@@ -94,6 +95,8 @@ TwoDimensionalInstruction* ProgramParser::GetInstructionFromString(StringList &i
 	{
 		myInstr = GetBranchIfGreaterInstructionFromSplitString(instructionStringList);
 	}
+
+	// If non-basic instruction, get it here
 
 	return myInstr;
 }
