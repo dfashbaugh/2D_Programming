@@ -95,6 +95,18 @@ TwoDimensionalInstruction* ProgramParser::GetInstructionFromString(StringList &i
 	{
 		myInstr = GetBranchIfGreaterInstructionFromSplitString(instructionStringList);
 	}
+	else if(instructionNumber == multInstr)
+	{
+		myInstr = GetMultiplyInstructionFromSplitString(instructionStringList);
+	}
+	else if(instructionNumber == divInstr)
+	{
+		myInstr = GetDivideInstructionFromSplitString(instructionStringList);
+	}
+	else if(instructionNumber == nopInstr)
+	{
+		myInstr = GetNOPInstructionFromSplitString(instructionStringList);
+	}
 
 	// If non-basic instruction, get it here
 
@@ -154,7 +166,34 @@ TwoDimensionalInstruction* ProgramParser::GetBranchIfGreaterInstructionFromSplit
 	int dDestY = std::atoi(instructionStringList[8].c_str());
 
 	return new BranchIfGreaterInstruction(Reg1,Reg2, TwoDimensionalAddress(dDestX, dDestY), TwoDimensionalAddress(brDestX,brDestY));
-
 }
 
+TwoDimensionalInstruction* ProgramParser::GetMultiplyInstructionFromSplitString(StringList &instructionStringList)
+{
+	std::cout << "Multiply Type" << std::endl;
+	int Reg1 = std::atoi(instructionStringList[3].c_str());
+	int Reg2 = std::atoi(instructionStringList[4].c_str());
+	int RegDest = std::atoi(instructionStringList[5].c_str());
+	int destX = std::atoi(instructionStringList[6].c_str());
+	int destY = std::atoi(instructionStringList[7].c_str());
+	return new MultInstruction(Reg1, Reg2, RegDest, TwoDimensionalAddress(destX, destY));
+}
 
+TwoDimensionalInstruction* ProgramParser::GetDivideInstructionFromSplitString(StringList &instructionStringList)
+{
+	std::cout << "Divide Type" << std::endl;
+	int Reg1 = std::atoi(instructionStringList[3].c_str());
+	int Reg2 = std::atoi(instructionStringList[4].c_str());
+	int RegDest = std::atoi(instructionStringList[5].c_str());
+	int destX = std::atoi(instructionStringList[6].c_str());
+	int destY = std::atoi(instructionStringList[7].c_str());
+	return new DivInstruction(Reg1, Reg2, RegDest, TwoDimensionalAddress(destX, destY));
+}
+
+TwoDimensionalInstruction* ProgramParser::GetNOPInstructionFromSplitString(StringList &instructionStringList)
+{
+	std::cout << "Nop Type" << std::endl;
+	int destX = std::atoi(instructionStringList[3].c_str());
+	int destY = std::atoi(instructionStringList[4].c_str());
+	return new NOpInstruction(TwoDimensionalAddress(destX, destY));
+}
