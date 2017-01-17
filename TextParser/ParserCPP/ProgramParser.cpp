@@ -97,7 +97,7 @@ TwoDimensionalInstruction* ProgramParser::GetInstructionFromString(StringList &i
 	}
 	else if(instructionNumber == multInstr)
 	{
-		myInstr = GetMultiplyInstructionFromSplitString(instructionString);
+		myInstr = GetMultiplyInstructionFromSplitString(instructionStringList);
 	}
 
 	// If non-basic instruction, get it here
@@ -160,7 +160,7 @@ TwoDimensionalInstruction* ProgramParser::GetBranchIfGreaterInstructionFromSplit
 	return new BranchIfGreaterInstruction(Reg1,Reg2, TwoDimensionalAddress(dDestX, dDestY), TwoDimensionalAddress(brDestX,brDestY));
 }
 
-TwoDimensionalInstruction* GetMultiplyInstructionFromSplitString(StringList &instructionStringList)
+TwoDimensionalInstruction* ProgramParser::GetMultiplyInstructionFromSplitString(StringList &instructionStringList)
 {
 	std::cout << "Multiply Type" << std::endl;
 	int Reg1 = std::atoi(instructionStringList[3].c_str());
