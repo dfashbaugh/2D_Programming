@@ -18,7 +18,8 @@ enum BasicInstructionEnums {addInstr = 0,
 							setInstr = 2, 
 							multInstr = 3, 
 							divInstr = 4, 
-							brgrInstr = 5};
+							brgrInstr = 5,
+							nopInstr = 6};
 
 typedef std::vector<TwoDimensionalInstructionData> InstructionList;
 typedef std::vector<std::string> StringList;
@@ -49,4 +50,5 @@ private:
 	TwoDimensionalInstruction* GetBranchIfGreaterInstructionFromSplitString(StringList &instructionStringList);
 	TwoDimensionalInstruction* GetMultiplyInstructionFromSplitString(StringList &instructionStringList);
 	TwoDimensionalInstruction* GetDivideInstructionFromSplitString(StringList &instructionStringList);
+	TwoDimensionalInstruction* GetNOPInstructionFromSplitString(StringList &instructionStringList);
 };

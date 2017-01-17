@@ -103,6 +103,10 @@ TwoDimensionalInstruction* ProgramParser::GetInstructionFromString(StringList &i
 	{
 		myInstr = GetDivideInstructionFromSplitString(instructionStringList);
 	}
+	else if(instructionNumber == nopInstr)
+	{
+		myInstr = GetNOPInstructionFromSplitString(instructionStringList);
+	}
 
 	// If non-basic instruction, get it here
 
@@ -184,4 +188,12 @@ TwoDimensionalInstruction* ProgramParser::GetDivideInstructionFromSplitString(St
 	int destX = std::atoi(instructionStringList[6].c_str());
 	int destY = std::atoi(instructionStringList[7].c_str());
 	return new DivInstruction(Reg1, Reg2, RegDest, TwoDimensionalAddress(destX, destY));
+}
+
+TwoDimensionalInstruction* ProgramParser::GetNOPInstructionFromSplitString(StringList &instructionStringList)
+{
+	std::cout << "Nop Type" << std::endl;
+	int destX = std::atoi(instructionStringList[3].c_str());
+	int destY = std::atoi(instructionStringList[4].c_str());
+	return new NOpInstruction(TwoDimensionalAddress(destX, destY));
 }
