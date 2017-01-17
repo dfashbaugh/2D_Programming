@@ -99,6 +99,10 @@ TwoDimensionalInstruction* ProgramParser::GetInstructionFromString(StringList &i
 	{
 		myInstr = GetMultiplyInstructionFromSplitString(instructionStringList);
 	}
+	else if(instructionNumber == divInstr)
+	{
+		myInstr = GetDivideInstructionFromSplitString(instructionStringList);
+	}
 
 	// If non-basic instruction, get it here
 
@@ -171,4 +175,13 @@ TwoDimensionalInstruction* ProgramParser::GetMultiplyInstructionFromSplitString(
 	return new MultInstruction(Reg1, Reg2, RegDest, TwoDimensionalAddress(destX, destY));
 }
 
-
+TwoDimensionalInstruction* ProgramParser::GetDivideInstructionFromSplitString(StringList &instructionStringList)
+{
+	std::cout << "Divide Type" << std::endl;
+	int Reg1 = std::atoi(instructionStringList[3].c_str());
+	int Reg2 = std::atoi(instructionStringList[4].c_str());
+	int RegDest = std::atoi(instructionStringList[5].c_str());
+	int destX = std::atoi(instructionStringList[6].c_str());
+	int destY = std::atoi(instructionStringList[7].c_str());
+	return new DivInstruction(Reg1, Reg2, RegDest, TwoDimensionalAddress(destX, destY));
+}

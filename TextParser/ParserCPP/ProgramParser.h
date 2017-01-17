@@ -48,4 +48,5 @@ private:
 	TwoDimensionalInstruction* GetSetInstructionFromSplitString(StringList &instructionStringList);
 	TwoDimensionalInstruction* GetBranchIfGreaterInstructionFromSplitString(StringList &instructionStringList);
 	TwoDimensionalInstruction* GetMultiplyInstructionFromSplitString(StringList &instructionStringList);
+	TwoDimensionalInstruction* GetDivideInstructionFromSplitString(StringList &instructionStringList);
 };
